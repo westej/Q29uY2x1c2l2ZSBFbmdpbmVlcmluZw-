@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <bluetooth/conn.h>
 #include <bluetooth/gatt.h>
 #include <bluetooth/uuid.h>
@@ -40,3 +41,37 @@ BT_GATT_SERVICE_DEFINE(_service,
         NULL, _on_data_received, NULL
     ),
 );
+
+/*
+ *
+ */
+static struct bt_data const adv_data[] = {
+    BT_DATA_BYTES(BT_DATA_FLAGS, BT_LE_AD_NO_BREDR),
+    BT_DATA_BYTES(BT_DATA_UUID128_ALL, BT_ADV_UUID_128),
+};
+
+/*
+ *
+ */
+static struct bt_data const sr_data[] = {
+    BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(CONFIG_BT_DEVICE_NAME) - 1),
+};
+
+/*
+ *
+ */
+int bluetooth_init(void)
+{
+    int ret = bt_enable(NULL);
+    if (ret != 0) {
+        printf("Bluetooth initialization error: %d\n", ret);
+    }
+    else {
+        ret = bt_le_adv_start(BT_LE_ADV_CONN, adv_data, ARRAY_SIZE(adv_data), sr_data, ARRAY_SIZE(sr_data));
+        if (ret != 0) {
+            printf("Advertising start error: %d\n", ret);
+        }
+    }
+
+    return ret;
+}

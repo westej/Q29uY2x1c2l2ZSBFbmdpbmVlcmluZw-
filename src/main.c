@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <zephyr.h>
 
+#include "bluetooth.h"
 #include "sensor.h"
 
 /*
@@ -25,4 +26,5 @@ void main(void)
 {
     sensor_cb_t sensor_cb = { .on_data = _on_sensor_data };
     (void) sensor_init(&sensor_cb);
+    (void) bluetooth_init();
 }
