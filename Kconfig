@@ -1,0 +1,18 @@
+mainmenu "Q29uY2x1c2l2ZSBFbmdpbmVlcmluZw"
+
+config SENSOR_THREAD_STACK_SIZE
+    int "Sensor thread stack size"
+
+config SENSOR_THREAD_PRIORITY
+    int "Sensor thread priority"
+
+config SENSOR_THREAD_PERIOD_DEFAULT_VALUE
+    int "Default period of the sensor thread in milliseconds"
+
+config SENSOR_THREAD_PERIOD_MINIMUM_VALUE
+    int "Minimum period of the sensor thread in milliseconds"
+
+config SENSOR_THREAD_PERIOD_MAXIMUM_VALUE
+    int "Maximum period of the sensor thread in milliseconds"
+
+source "Kconfig.zephyr"
