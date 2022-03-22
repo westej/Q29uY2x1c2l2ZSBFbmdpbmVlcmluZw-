@@ -10,6 +10,6 @@ create_container
 
 docker start ${CONTAINER}
 docker exec --interactive --privileged --workdir /root/zephyrproject/zephyr ${CONTAINER} \
-    west build -p auto -b nrf52dk_nrf52832 -d ${CONTAINER_PROJECT_DIR}/build samples/basic/blinky -- -DSHIELD=x_nucleo_iks01a2
+    west build -p -b nrf52dk_nrf52832 -d ${CONTAINER_PROJECT_DIR}/build samples/basic/blinky -- -DSHIELD=x_nucleo_iks01a2
 
 popd
