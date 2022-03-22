@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
 IMAGE=zephyr-sdk
-CONTAINER=zephyr-build-CONTAINER
+CONTAINER=zephyr-build-container
 
 HOST_PROJECT_DIR=${SCRIPT_DIR}/../..
 CONTAINER_PROJECT_DIR=/opt/project
