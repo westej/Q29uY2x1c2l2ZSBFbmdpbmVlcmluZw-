@@ -9,14 +9,9 @@
  */
 static void _on_sensor_data(float_t pressure, float_t temperature)
 {
-    static int64_t time;
-    int64_t new_time = k_uptime_get();
-    if (time == 0) {
-        time = new_time;
-    }
-
-    printf("Time: %d Pressure: %f Temperature: %f\n", (int) (new_time - time), pressure, temperature);
-    time = new_time;
+    char buf[64];
+    size_t len = snprintf(buf, sizeof(buf), "Pressure: %f Temperature: %f\n", pressure, temperature);
+    (void) bluetooth_send(buf, len);
 }
 
 /*
@@ -24,7 +19,8 @@ static void _on_sensor_data(float_t pressure, float_t temperature)
  */
 void main(void)
 {
+    (void) bluetooth_init(NULL);
+
     sensor_cb_t sensor_cb = { .on_data = _on_sensor_data };
     (void) sensor_init(&sensor_cb);
-    (void) bluetooth_init();
 }

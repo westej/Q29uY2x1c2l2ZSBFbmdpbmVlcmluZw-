@@ -1,6 +1,8 @@
 #ifndef BLUETOOTH_H_
 #define BLUETOOTH_H_
 
+#include <stddef.h>
+
 /*
  *
  */
@@ -44,5 +46,24 @@
                                     CONFIG_BT_SERVICE_TX_UUID_CLOCK_SEQUENCE_HI_AND_RES_CLOCK_SEQUENCE_LOW, \
                                     CONFIG_BT_SERVICE_TX_UUID_NODE \
                                 )
+
+/*
+ *
+ */
+typedef struct bluetooth_cb
+{
+    void (*on_data)(void const *buf, size_t len);
+
+} bluetooth_cb_t;
+
+/*
+ *
+ */
+int bluetooth_init(bluetooth_cb_t const *callbacks);
+
+/*
+ *
+ */
+int bluetooth_send(void const *data, size_t len);
 
 #endif // BLUETOOTH_H_
