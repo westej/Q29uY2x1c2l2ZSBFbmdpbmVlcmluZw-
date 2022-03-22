@@ -1,0 +1,20 @@
+mainmenu "Q29uY2x1c2l2ZSBFbmdpbmVlcmluZw"
+
+# refer to IETF RFC4122 section 3.
+
+config BT_ADV_UUID_TIME_LOW
+	hex "BLE advertising UUID time-low section value"
+
+config BT_ADV_UUID_TIME_MID
+	hex "BLE advertising UUID time-mid section value"
+
+config BT_ADV_UUID_TIME_HIGH_AND_VERSION
+	hex "BLE advertising UUID time-high-and-version section value"
+
+config BT_ADV_UUID_CLOCK_SEQUENCE_HI_AND_RES_CLOCK_SEQUENCE_LOW
+	hex "BLE advertising UUID clock-seq-and-reserved && clock-seq-low section value"
+
+config BT_ADV_UUID_NODE
+	hex "BLE advertising UUID node section value"
+
+source "Kconfig.zephyr"
